@@ -100,7 +100,7 @@ class MetabaseUrlParamParser {
 const getRedirectUrl = () => {
   const currentParams = new MetabaseUrlParamParser(window.location.href);
   const redirectUrl = currentParams.extractRedirectUrl();
-  const newUrl = `${redirectUrl.origin}${this.url.pathname}?${currentParams.toString()}`;
+  const newUrl = `${redirectUrl.origin}${redirectUrl.pathname}?${currentParams.toString()}`;
   return { newUrl, currentParams };
 };
 
