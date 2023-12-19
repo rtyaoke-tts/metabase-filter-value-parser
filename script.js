@@ -89,7 +89,7 @@ class MetabaseUrlParamParser {
     }
     replaceParamStr += "&...";
 
-    return `${this.url.origin}/${this.url.pathname}?${this.redirectUrlParamName}={your-redirect-url}&debug={true-or-false}${replaceParamStr}`;
+    return `${this.url.origin}${this.url.pathname}?${this.redirectUrlParamName}={your-redirect-url}&debug={true-or-false}${replaceParamStr}`;
   }
 
   toString() {
@@ -100,7 +100,7 @@ class MetabaseUrlParamParser {
 const getRedirectUrl = () => {
   const currentParams = new MetabaseUrlParamParser(window.location.href);
   const redirectUrl = currentParams.extractRedirectUrl();
-  const newUrl = `${redirectUrl.origin}/${this.url.pathname}?${currentParams.toString()}`;
+  const newUrl = `${redirectUrl.origin}${this.url.pathname}?${currentParams.toString()}`;
   return { newUrl, currentParams };
 };
 
@@ -125,7 +125,7 @@ const appendTestLinkElem = () => {
   const currentUrl = new URL(window.location.href)
   const testLink = `${
     currentUrl.origin
-  }/${currentUrl.pathname}?redirectUrl=https://google.com&debug=true&label_0=lb0&value_0=a,b,andc&label_1=lb1&value_1=aa,bb,andcc&label_2=lb2&value_2=aa,bb,andcc&hoge=hoge`;
+  }${currentUrl.pathname}?redirectUrl=https://google.com&debug=true&label_0=lb0&value_0=a,b,andc&label_1=lb1&value_1=aa,bb,andcc&label_2=lb2&value_2=aa,bb,andcc&hoge=hoge`;
   const el = document.createElement("a");
   el.href = testLink;
   el.innerHTML = `Test Link (${testLink})<br><br>`;
